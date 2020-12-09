@@ -1,0 +1,8 @@
+StateMachine sm1 {
+    states: (s1,s2,s3)
+    finalStates: (s3)
+    table: (<s1 -> s1 (a)>, <s1 -> s2 (b)>,
+			<s2 -> s1 (a)>, <s2 -> s3 (b)>,
+			<s3 -> s3 (a)>, <s3 -> s3 (b)>)
+	exec instr1 { print }
+}
