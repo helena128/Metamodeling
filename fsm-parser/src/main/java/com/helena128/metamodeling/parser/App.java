@@ -11,6 +11,11 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
+import com.helena128.metamodeling.parser.antlr4.StateMachineLexer;
+import com.helena128.metamodeling.parser.antlr4.StateMachineParser;
+import com.helena128.metamodeling.parser.TreePrinterListener;
+import com.helena128.metamodeling.parser.TreeUtils;
+
 public class App {
 
     public static void main(final String... args) {
@@ -21,9 +26,9 @@ public class App {
 
             //Loading the DSL script into the ANTLR stream.
             CharStream cs = new ANTLRInputStream(is);
-            com.helena128.metamodeling.parser.StateMachineLexer stateMachineLexer = new com.helena128.metamodeling.parser.StateMachineLexer(cs);
+            StateMachineLexer stateMachineLexer = new StateMachineLexer(cs);
             CommonTokenStream tokens = new CommonTokenStream(stateMachineLexer);
-            com.helena128.metamodeling.parser.StateMachineParser parser = new com.helena128.metamodeling.parser.StateMachineParser(tokens);
+            StateMachineParser parser = new StateMachineParser(tokens);
 
             List<String> ruleNames = Arrays.asList(parser.getRuleNames());
             ParseTree tree = parser.fsm();
